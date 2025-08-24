@@ -5,7 +5,7 @@ import java.util.List;
 public class Lion {
 
     boolean hasMane;
-    public Family family;
+    private final Family family;
 
     public Lion(String sex, Family family) throws Exception {
         if ("Самец".equals(sex)) {

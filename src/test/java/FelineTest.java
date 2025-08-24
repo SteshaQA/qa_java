@@ -14,32 +14,33 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.verify;
 
 
 @RunWith(MockitoJUnitRunner.class)
 public class FelineTest {
 
     @Spy
-    private Feline feline;
+    Feline feline;
 
     @Test
     public void eatMeatTest() throws Exception{
-        Mockito.when(feline.getFood("Хищник"))
-                .thenReturn(List.of("Животные", "Птицы", "Рыб"));
-
         List<String> actual = feline.eatMeat();
-        assertEquals(List.of("Животные", "Птицы", "Рыб"), actual);
+
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), actual);
+        verify(feline).getFood("Хищник");
     }
 
     @Test
     public void getFamilyTest(){
-        //Mockito.when(animal.getFamily()).thenReturn("Кошачьи");
+        Feline feline = new Feline();
         String actual = feline.getFamily();
         assertEquals("Кошачьи", actual);
     }
 
     @Test
     public void getKittensTestWithoutArgs(){
+        Feline feline = new Feline();
         int actual = feline.getKittens();
         assertEquals(1, actual);
     }

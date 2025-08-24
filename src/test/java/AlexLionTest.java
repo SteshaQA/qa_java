@@ -1,6 +1,5 @@
 import com.example.AlexLion;
 import com.example.Feline;
-import com.example.Lion;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +10,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AlexLionTest {
@@ -20,14 +20,13 @@ public class AlexLionTest {
     @Mock
     Feline feline;
 
-
     @Before
     public void setUp() throws Exception {
         alexLion = new AlexLion(feline);
     }
 
     @Test
-    public void AlexLionFoodTest() throws Exception {
+    public void alexLionFoodTest() throws Exception {
         Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         List<String> actual = alexLion.getFood();
         assertEquals(List.of("Животные", "Птицы", "Рыба"), actual);
@@ -35,8 +34,7 @@ public class AlexLionTest {
 
     @Test
     public void alexLionGetKittensTest() throws Exception {
-
-        Mockito.when(feline.getKittens(0)).thenReturn(0);
+        AlexLion alexLion = new AlexLion(feline);
         int actual = alexLion.getKittens();
         assertEquals(0, actual);
     }
@@ -57,7 +55,7 @@ public class AlexLionTest {
     @Test
     public void alexDoesHaveManeTest() throws Exception {
         boolean actual = alexLion.doesHaveMane();
-        assertEquals(true, actual);
+        assertTrue(actual);
     }
 
 }

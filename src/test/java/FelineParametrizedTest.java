@@ -1,6 +1,4 @@
-import com.example.Family;
 import com.example.Feline;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -33,7 +31,6 @@ public class FelineParametrizedTest {
     @Test
     public void checkGetKittens() {
         feline = new Feline();
-//        Mockito.when(family.getKittens(kittensCountInput)).thenReturn(kittensCountInput);
         assertEquals(expected, feline.getKittens(kittensCountInput));
     }
 }
